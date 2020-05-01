@@ -14,7 +14,7 @@ launchctl unload  $HOME/Library/LaunchAgents/rs.sh # stops the cronjob
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/kseniiazhuk/Applications/.rs.sh</string>
+    <string>/Users/onni/Applications/.rs.sh</string>
   </array>
 
   <key>Nice</key>

