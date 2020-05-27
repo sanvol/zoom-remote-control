@@ -1,12 +1,23 @@
-# Summer School 
+# Zoom remote control exploitation
 
-Project for Special Course in Information Security.
+Small project for ´Special Course in Information Security´ at Aalto University
+
+[Slides](presentation/Zoom_project_slides.pdf)
 
 ## Attack
 
-`./startUp.sh # starts http server and netcat`
+### Mac
+`./getShell.sh` # starts http server and netcat
 
-`python3 ksy.py --os=MacOS # starts keystroke injection on the desire OS, probably the same for Linux and MacOS` 
+`python3 ksi.py --os=MacOS` # starts keystroke injection on the desired OS, probably the same for Linux and MacOS 
 
 
+### Linux
 
+[Steps/commands](/Linux/victim/commands.md)
+
+ksi scripts partially automate the above using pynput library.
+
+`ksi_terminal.py` # keystroke injection stump to just open a terminal through zoom remote control
+
+`ksi_linux_ssh.py` # utilizes ssh access to perform the attack
